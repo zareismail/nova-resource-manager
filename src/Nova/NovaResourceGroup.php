@@ -5,7 +5,7 @@ namespace Zareismail\NovaResourceManager\Nova;
 use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Http\Requests\NovaRequest; 
-use Laravel\Nova\Fields\{ID, Text, Boolean}; 
+use Laravel\Nova\Fields\{ID, Text, Number, Boolean}; 
 use Laravel\Nova\Nova; 
 
 class NovaResourceGroup extends Resource
@@ -44,6 +44,9 @@ class NovaResourceGroup extends Resource
 
             Text::make(__('Label'), 'label')
                 ->sortable(),  
+
+            Number::make(__('Order'), 'order') 
+                ->sortable(), 
 
             Boolean::make(__('Visible'), 'visible')
                 ->default(true)

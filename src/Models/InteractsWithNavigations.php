@@ -30,8 +30,10 @@ trait InteractsWithNavigations
 	 */
     public static function loadMissingNavigations(Request $request)
     {
-    	$resources = static::missedNvaigations($request)->map(function($resource) {
-    		return static::resourceNavigationInformation($resource);
+    	$resources = static::missedNvaigations($request)->map(function($resource, $key) {
+    		return array_merge(static::resourceNavigationInformation($resource), [
+                'order' => $key
+            ]);
     	});
 
     	static::insert($resources->values()->all());
@@ -67,7 +69,9 @@ trait InteractsWithNavigations
             'resource'  => $resource,
             'label'     => $resource::label(),
             'name'      => $resource::uriKey(),
-            'group_id'  => NovaResourceGroup::firstOrCreate(['label' => $resource::group()])->id,  
+            'group_id'  => NovaResourceGroup::firstOrCreate(['label' => $resource::group()], [ 
+                'order' => NovaResourceGroup::count(), 
+            ])->id,  
         ];
     }
 

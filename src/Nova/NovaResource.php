@@ -3,7 +3,7 @@
 namespace Zareismail\NovaResourceManager\Nova;
 
 use Illuminate\Http\Request; 
-use Laravel\Nova\Fields\{ID, Text, Boolean, BelongsTo};
+use Laravel\Nova\Fields\{ID, Text, Number, Boolean, BelongsTo};
 
 class NovaResource extends Resource
 {    
@@ -38,6 +38,9 @@ class NovaResource extends Resource
 
             Text::make(__('Label'), 'label')
                 ->sortable(),
+
+            Number::make(__('Order'), 'order') 
+                ->sortable(), 
 
             Text::make(__('Name'), 'name')
                 ->exceptOnForms()

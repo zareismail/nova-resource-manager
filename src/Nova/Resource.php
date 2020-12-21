@@ -45,6 +45,20 @@ abstract class Resource extends BaseResource
     ]; 
 
     /**
+     * Initialize the given index query.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $search
+     * @param  string  $withTrashed
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected static function initializeQuery(NovaRequest $request, $query, $search, $withTrashed)
+    {
+        return parent::indexQuery($request, $query, $search, $withTrashed)->orderBy('order');
+    }
+
+    /**
      * Build an "index" query for the given resource.
      *
      * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
