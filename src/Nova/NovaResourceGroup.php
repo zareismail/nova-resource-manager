@@ -78,4 +78,15 @@ class NovaResourceGroup extends Resource
             }); 
         });
     }
+
+    /**
+     * Determine if the resource should be available for the given request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    public static function authorizedToViewAny(Request $request)
+    {
+        return true;
+    }
 }
