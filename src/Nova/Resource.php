@@ -1,7 +1,8 @@
 <?php
 
 namespace Zareismail\NovaResourceManager\Nova;
- 
+
+use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest; 
 use Zareismail\NovaContracts\Nova\Resource as BaseResource; 
 
@@ -109,4 +110,17 @@ abstract class Resource extends BaseResource
     {  
         return static::authenticateQuery($request, parent::relatableQuery($request, $query));
     } 
+
+    /**
+     * Get the actions available on the entity.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function actions(Request $request)
+    {
+        return [
+            Actions\Refresh::make()->standalone(),
+        ];
+    }
 }
