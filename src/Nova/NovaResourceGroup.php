@@ -74,7 +74,7 @@ class NovaResourceGroup extends Resource
     { 
         return parent::indexQuery($request, $query)->tap(function($query) use ($request) {
             $query->whereHas('resources', function($query) use ($request) {
-                return $query->resourceIn(Nova::availableResources($request));
+                return $query->resourceIn(Nova::resourcesForNavigation($request));
             }); 
         });
     }

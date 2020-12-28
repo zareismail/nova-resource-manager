@@ -4,6 +4,8 @@ namespace Zareismail\NovaResourceManager\Nova;
 
 use Illuminate\Http\Request; 
 use Laravel\Nova\Fields\{ID, Text, Number, Boolean, BelongsTo};
+use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Nova;
 
 class NovaResource extends Resource
 {    
@@ -58,6 +60,20 @@ class NovaResource extends Resource
                 }),
         ];
     } 
+
+    /**
+     * Build an "index" query for the given resource.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public static function indexQuery(NovaRequest $request, $query)
+    { 
+        return parent::indexQuery($request, $query)->tap(function($query) use ($request) {
+            $query->resourceIn(Nova::resourcesForNavigation($request));
+        });
+    }
 
     /**
      * Build a "relatable" query for the given resource.
