@@ -36,7 +36,8 @@ class NovaResource extends Resource
 
             BelongsTo::make(__('Group'), 'group', NovaResourceGroup::class)
                 ->showCreateRelationButton()
-                ->sortable(),
+                ->sortable()
+                ->inverse('resources'),
 
             Text::make(__('Label'), 'label')
                 ->sortable(),

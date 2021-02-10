@@ -5,7 +5,7 @@ namespace Zareismail\NovaResourceManager\Nova;
 use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Http\Requests\NovaRequest; 
-use Laravel\Nova\Fields\{ID, Text, Number, Boolean}; 
+use Laravel\Nova\Fields\{ID, Text, Number, Boolean, HasMany}; 
 use Laravel\Nova\Nova; 
 
 class NovaResourceGroup extends Resource
@@ -60,6 +60,8 @@ class NovaResourceGroup extends Resource
 
                     return true;
                 }),
+
+            HasMany::make(__('Resources'), 'resources', NovaResource::class),
         ];
     }  
 
