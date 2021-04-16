@@ -112,6 +112,31 @@ abstract class Resource extends BaseResource
     } 
 
     /**
+     * Determine if the resource should be available for the given request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function authorizeToViewAny(Request $request)
+    {
+        return true;
+    }
+
+
+    /**
+     * Determine if the resource should be available for the given request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    public static function authorizedToViewAny(Request $request)
+    {
+        return true;
+    }
+
+    /**
      * Get the actions available on the entity.
      *
      * @param  \Illuminate\Http\Request  $request
