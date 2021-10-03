@@ -4,7 +4,7 @@ namespace Zareismail\NovaResourceManager\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest; 
-use Zareismail\NovaContracts\Nova\Resource as BaseResource; 
+use Laravel\Nova\Resource as BaseResource; 
 
 abstract class Resource extends BaseResource
 {  
