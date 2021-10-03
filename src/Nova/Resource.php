@@ -98,20 +98,6 @@ abstract class Resource extends BaseResource
     }
 
     /**
-     * Build a "relatable" query for the given resource.
-     *
-     * This query determines which instances of the model may be attached to other resources.
-     *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public static function relatableQuery(NovaRequest $request, $query)
-    {  
-        return static::authenticateQuery($request, parent::relatableQuery($request, $query));
-    } 
-
-    /**
      * Determine if the resource should be available for the given request.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -123,7 +109,6 @@ abstract class Resource extends BaseResource
     {
         return true;
     }
-
 
     /**
      * Determine if the resource should be available for the given request.

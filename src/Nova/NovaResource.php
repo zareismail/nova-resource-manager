@@ -77,19 +77,6 @@ class NovaResource extends Resource
     }
 
     /**
-     * Build a "relatable" query for the given resource.
-     *
-     * This query determines which instances of the model may be attached to other resources.
-     *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public static function relatableQuerys(NovaRequest $request, $query)
-    {  
-        return static::authenticateQuery($request, parent::relatableQuery($request, $query));
-    } 
-    /**
      * Determine if the current user can delete the given resource.
      *
      * @param  \Illuminate\Http\Request  $request
