@@ -32,7 +32,7 @@ trait InteractsWithNavigations
     {
     	$resources = static::missedNvaigations($request)->map(function($resource, $key) {
     		return array_merge(static::resourceNavigationInformation($resource), [
-                'order' => $key
+                'order' => intval($key)
             ]);
     	});
 
