@@ -108,4 +108,17 @@ class NovaResource extends Resource
     {
         return true;
     }
+
+    /**
+     * Get the filters available on the entity.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function filters(Request $request)
+    {
+        return [
+            Filters\DisplayByGroup::make(),
+        ];
+    }
 }
