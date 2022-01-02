@@ -24,8 +24,8 @@ class Refresh extends Action
     public function handle(ActionFields $fields, Collection $models)
     {
         \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        NovaResource::truncate();
-        NovaResourceGroup::truncate(); 
+        NovaResource::get()->each->forceDelete();
+        NovaResourceGroup::get()->each->forceDeleet(); 
         \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 
