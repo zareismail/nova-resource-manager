@@ -16,6 +16,13 @@ abstract class Resource extends BaseResource
     public static $perPageOptions = [1000];
 
     /**
+     * The number of resources to show per page via relationships.
+     *
+     * @var int
+     */
+    public static $perPageViaRelationship = 1000;
+
+    /**
      * The logical group associated with the resource.
      *
      * @var string
