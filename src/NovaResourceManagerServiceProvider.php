@@ -54,10 +54,10 @@ class NovaResourceManagerServiceProvider extends ServiceProvider implements Defe
      */
     public function registerResources()
     { 
-        LaravelNova::resources([ 
+        LaravelNova::resources(config('nova-resource-manager.resources', [ 
             Nova\NovaResource::class,
             Nova\NovaResourceGroup::class,
-        ]);
+        ]));
     }
 
     /**
