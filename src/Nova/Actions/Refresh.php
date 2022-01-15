@@ -25,7 +25,7 @@ class Refresh extends Action
     {
         \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         NovaResource::get()->each->forceDelete();
-        NovaResourceGroup::get()->each->forceDeleet(); 
+        NovaResourceGroup::get()->each->forceDelete(); 
         \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 
