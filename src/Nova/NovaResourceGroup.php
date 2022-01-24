@@ -51,14 +51,16 @@ class NovaResourceGroup extends Resource
             Boolean::make(__('Visible'), 'visible')
                 ->default(true)
                 ->sortable()
-                ->canSee(function($request) {
-                    if($request->isUpdateOrUpdateAttachedRequest()) {
-                        $resource = $request->findModelOrFail();
-
-                        return $resource->resources()->whereResource(NovaResource::class)->count() == 0;
+                ->canSee(function($request) { 
+                    if(! $request->isUpdateOrUpdateAttachedRequest() ||
+                        $request->resource() !== static::class
+                        ) {
+                        return true;
                     } 
 
-                    return true;
+                    $resource = $request->findModelOrFail();
+
+                    return $resource->resources()->whereResource(NovaResource::class)->count() == 0;
                 }),
 
             HasMany::make(__('Resources'), 'resources', NovaResource::class),
